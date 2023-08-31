@@ -9,6 +9,7 @@ const baseQuery = fetchBaseQuery({
 export const coreApi = createApi({
     reducerPath: 'core',
     baseQuery,
+    tagTypes: ['user'],
     endpoints: (build) => ({
         regUser: build.mutation({
             query: (data) => ({
@@ -32,6 +33,7 @@ export const coreApi = createApi({
                     url: `/core/${id}`,
                 }
             },
+            providesTags: ['user'],
         }),
         editInfo: build.mutation({
             query: ({ data, token }) => {
@@ -44,6 +46,7 @@ export const coreApi = createApi({
                     body: data,
                 }
             },
+            invalidatesTags: ['user'],
         }),
     }),
 })
@@ -51,6 +54,7 @@ export const coreApi = createApi({
 export const postsApi = createApi({
     reducerPath: 'posts',
     baseQuery,
+    tagTypes: ['posts'],
     endpoints: (build) => ({
         addPost: build.mutation({
             query: ({ data, token }) => {
@@ -63,9 +67,51 @@ export const postsApi = createApi({
                     body: data,
                 }
             },
+            invalidatesTags: ['posts'],
+        }),
+        getAllPosts: build.query({
+            query: () => {
+                return {
+                    url: `/posts/`,
+                }
+            },
+            providesTags: ['posts'],
+        }),
+        editPost: build.mutation({
+            query: ({ data, token, id }) => {
+                return {
+                    url: `/posts/${id}/`,
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                    method: 'PATCH',
+                    body: data,
+                }
+            },
+            invalidatesTags: ['posts'],
+        }),
+        del: build.mutation({
+            query: ({ token, id }) => {
+                return {
+                    url: `/posts/${id}/`,
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                    method: 'DELETE',
+                }
+            },
+            invalidatesTags: ['posts'],
+        }),
+        getById: build.query({
+            query: (id) => {
+                return {
+                    url: `/posts/${id}`,
+                    method: 'GET',
+                }
+            },
         }),
     }),
 })
 
 export const { useRegUserMutation, useLoginMutation, useGetInfoQuery, useEditInfoMutation } = coreApi
-export const { useAddPostMutation } = postsApi
+export const { useAddPostMutation, useGetAllPostsQuery, useEditPostMutation, useGetByIdQuery, useDelMutation } = postsApi

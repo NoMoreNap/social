@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AddPost } from '../../blocks/addpost/add'
 import { ModalEdit } from '../../blocks/modal/modal'
+import { Posts } from '../../blocks/posts/posts'
 import { useGetInfoQuery } from '../../redux/thunks'
 import s from './profile.module.css'
 const mockAvatar = 'https://sun9-13.userapi.com/impg/h217leEu2Df1jLI5L54SXZeTmwuN967bIoWomA/VqOlKH8uCwY.jpg?size=735x511&quality=95&sign=a806fb8e069ff2859474492fc3fc70a1&type=album'
@@ -55,7 +56,8 @@ export const Profile = () => {
                 {isMyProfile ? <EditProfile toggle={toggle} /> : <></>}
             </div>
             {modal ? <ModalEdit data={data} toggle={toggle} /> : <></>}
-            {isMyProfile ? <AddPost ava={mockAvatar} /> : <></>}
+            {isMyProfile ? <AddPost ava={mockAvatar} email={data.email}/> : <></>}
+            {<Posts email={data.email} isMyProfile={isMyProfile}/>}
         </section>
     )
 }

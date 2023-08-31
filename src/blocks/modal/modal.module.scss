@@ -10,11 +10,12 @@
 .wrapper  {
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.61);
     backdrop-filter: blur(7px);
     animation: fade-in .1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
     left: 0;
+    top:  0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,6 +56,21 @@
         &:hover {
             background-color: rgba(255, 255, 255, 0.863);
         }
+
+        &__del {
+            min-width: 50%;
+            padding: 0 10px;
+            height: 50px;
+            font-size: 1.4rem;
+            color: rgb(255, 255, 255);
+            background-color: rgb(248, 73, 73);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: .3s background-color ease;
+            &:hover {
+                background-color: rgba(255, 72, 72, 0.863);
+            }
+        }
     }
     &_times {
         position: absolute;
@@ -64,4 +80,11 @@
         font-size: 2.5rem;
     }
 
+}
+
+#photo {
+    display: none;
+}
+.media {
+    cursor: pointer;
 }

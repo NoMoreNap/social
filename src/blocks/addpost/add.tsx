@@ -1,8 +1,8 @@
 import React from 'react'
 import s from './add.module.css'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useAddPostMutation } from '../../redux/thunks'
-const MediaSelector = () => {
+export const MediaSelector = () => {
     return (
         <svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -15,16 +15,17 @@ const MediaSelector = () => {
     )
 }
 
-export const AddPost = (props: { ava: string }) => {
+export const AddPost = (props: { ava: string, email: string }) => {
     const wrapper = useRef<HTMLDivElement>(null)
     const token = localStorage.getItem('token')
     const [add] = useAddPostMutation()
-    const { ava } = props
+    const { ava, email } = props
 
     const appendPost = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const form = e.target as HTMLFormElement
         const formData = new FormData(form)
+        formData.append('email', email)
         await add({ data: formData, token }).then((res) => console.log(res))
     }
     return (

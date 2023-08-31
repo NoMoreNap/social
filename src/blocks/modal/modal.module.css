@@ -9,12 +9,13 @@
 .wrapper {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.61);
   -webkit-backdrop-filter: blur(7px);
           backdrop-filter: blur(7px);
   animation: fade-in 0.1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   left: 0;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,10 +60,32 @@
 .form_btn:hover {
   background-color: rgba(255, 255, 255, 0.863);
 }
+.form_btn__del {
+  min-width: 50%;
+  padding: 0 10px;
+  height: 50px;
+  font-size: 1.4rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(248, 73, 73);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s background-color ease;
+}
+.form_btn__del:hover {
+  background-color: rgba(255, 72, 72, 0.863);
+}
 .form_times {
   position: absolute;
   right: 10px;
   top: 0;
   cursor: pointer;
   font-size: 2.5rem;
+}
+
+#photo {
+  display: none;
+}
+
+.media {
+  cursor: pointer;
 }/*# sourceMappingURL=modal.module.css.map */

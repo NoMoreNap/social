@@ -18,8 +18,8 @@ a {
     padding-right: calc(50% - (1000px / 2));
 }
 #root {
-    height: 100vh;
     background-color: rgb(54, 54, 54);
+    min-height: 100vh;
 }
 :root {
     color-scheme: dark;
