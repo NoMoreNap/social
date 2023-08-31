@@ -1,0 +1,67 @@
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.wrapper  {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.61);
+    backdrop-filter: blur(7px);
+    animation: fade-in .1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form {
+    width: 400px;
+    height: fit-content;
+    background-color: rgb(32, 32, 32);
+    border-radius: 10px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    align-items: center;
+    position: relative;
+    &_title {
+        font-size: 2rem;
+        font-weight: 300;
+    }
+    &_input {
+        padding: 10px 18px;
+        font-weight: 300;
+        background-color: transparent;
+        border-bottom: 1px solid rgb(182, 182, 182);
+        color: rgb(182, 182, 182);
+        font-size: 1.1rem;
+    }
+    &_btn {
+        min-width: 50%;
+        padding: 0 10px;
+        height: 50px;
+        font-size: 1.4rem;
+        color: black;
+        background-color: white;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: .3s background-color ease;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.863);
+        }
+    }
+    &_times {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        cursor: pointer;
+        font-size: 2.5rem;
+    }
+
+}
